@@ -74,31 +74,26 @@
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/17/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <p>写博客、发布文章<br>新建一篇博客，执行下面的命令：</p>
+<p>hexo new post “article title”<br>1</p>
+<p>这时候在我的 电脑的目录下 F:\hexo\source\ _posts 将会看到 article title.md 文件</p>
+<p>用MarDown编辑器打开就可以编辑文章了。文章编辑好之后，运行生成、部署命令：</p>
+<p>hexo g   // 生成<br>hexo d   // 部署<br>1<br>2<br>当然你也可以执行下面的命令，相当于上面两条命令的效果</p>
+<p>hexo d -g #在部署前先生成<br>1</p>
+<p>部署成功后访问 你的地址，<a href="https://yourName.github.io（这里输入我的地址：">https://yourName.github.io（这里输入我的地址：</a> <a target="_blank" rel="noopener" href="https://gdutxiao.github.io/">https://gdutxiao.github.io</a> ),将可以看到生成的文章。</p>
+<p>踩坑提醒</p>
+<p>1）注意需要提前安装一个扩展：<br>npm install hexo-deployer-git –save<br>1<br>如果没有执行者行命令，将会提醒</p>
+<p>deloyer not found:git</p>
+<p>2）如果出现下面这样的错误，<br>Permission denied (publickey).<br>fatal: Could not read from remote repository.<br>Please make sure you have the correct access rights<br>and the repository exists.</p>
+<p>则是因为没有设置好public key所致。<br>在本机生成public key,不懂的可以参考我的这一篇博客Git ssh 配置及使用</p>
+<p>主题推荐<br>每个不同的主题会需要不同的配置，主题配置文件在主题目录下的_config.yml。有两个比较好的主题推荐给大家。</p>
+<p>Yilia</p>
+<p>Yilia 是为 hexo 2.4+制作的主题。<br>崇尚简约优雅，以及极致的性能。</p>
+<p>Yilia地址</p>
+<p>NexT</p>
+<p>我的网站就是采用这个主题，简洁美观。<br>目前Github上Star最高的Hexo主题，支持几种不同的风格。<br>作者提供了非常完善的配置说明。</p>
 
       
     </div>
@@ -144,7 +139,7 @@
       <ul>
         
           <li>
-            <a href="/2020/10/17/hello-world/">Hello World</a>
+            <a href="/2020/10/17/hello-world/">(no title)</a>
           </li>
         
       </ul>
