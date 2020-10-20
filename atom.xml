@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-10-19T13:47:02.024Z</updated>
+  <updated>2020-10-20T15:30:30.055Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2016/11/14/004Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"/>
     <id>http://example.com/2016/11/14/004Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</id>
     <published>2016-11-13T16:00:00.000Z</published>
-    <updated>2020-10-19T13:47:02.024Z</updated>
+    <updated>2020-10-20T15:30:30.055Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Java基础知识回顾&quot;&gt;&lt;a href=&quot;#Java基础知识回顾&quot; class=&quot;headerlink&quot; title=&quot;Java基础知识回顾&quot;&gt;&lt;/a&gt;Java基础知识回顾&lt;/h1&gt;&lt;h2 id=&quot;1、Java概述&quot;&gt;&lt;a href=&quot;#1、Java概述&quot; class=&quot;headerlink&quot; title=&quot;1、Java概述&quot;&gt;&lt;/a&gt;1、Java概述&lt;/h2&gt;&lt;h3 id=&quot;1-1-什么是Java？&quot;&gt;&lt;a href=&quot;#1-1-什么是Java？&quot; class=&quot;headerlink&quot; title=&quot;1.1 什么是Java？&quot;&gt;&lt;/a&gt;1.1 什么是Java？&lt;/h3&gt;&lt;p&gt; Java是一门面向对象的程序设计语言 &lt;/p&gt;
@@ -49,7 +49,65 @@
 &lt;h3 id=&quot;1-4-JDK是什么？由几部分组成？之间的关系是什么？&quot;&gt;&lt;a href=&quot;#1-4-JDK是什么？由几部分组成？之间的关系是什么？&quot; class=&quot;headerlink&quot; title=&quot;1.4 JDK是什么？由几部分组成？之间的关系是什么？&quot;&gt;&lt;/a&gt;1.4 JDK是什么？由几部分组成？之间的关系是什么？&lt;/h3&gt;&lt;p&gt; JDK：Java Development Kit 的简称，Java 开发工具包，由Java的开发工具集（主要包括Java编译器、程序调试工具等）和JRE(Java运行时环境)组成。&lt;br&gt; JRE：Java Runtime Environment 的简称，Java 运行环境，为 Java 的运行提供了所需环境。 &lt;/p&gt;
 &lt;h3 id=&quot;1-5-JDK安装和环境变量的配置&quot;&gt;&lt;a href=&quot;#1-5-JDK安装和环境变量的配置&quot; class=&quot;headerlink&quot; title=&quot;1.5 JDK安装和环境变量的配置&quot;&gt;&lt;/a&gt;1.5 JDK安装和环境变量的配置&lt;/h3&gt;&lt;h3 id=&quot;1-6-Java程序的执行过程&quot;&gt;&lt;a href=&quot;#1-6-Java程序的执行过程&quot; class=&quot;headerlink&quot; title=&quot;1.6 Java程序的执行过程&quot;&gt;&lt;/a&gt;1.6 Java程序的执行过程&lt;/h3&gt;&lt;p&gt;利用Javac进行编译，然后利用Java虚拟机进行运行。&lt;/p&gt;
 &lt;h3 id=&quot;1-7-Java语言的特点？&quot;&gt;&lt;a href=&quot;#1-7-Java语言的特点？&quot; class=&quot;headerlink&quot; title=&quot;1.7 Java语言的特点？&quot;&gt;&lt;/a&gt;1.7 Java语言的特点？&lt;/h3&gt;&lt;p&gt; 特点：面向对象；异常处理机制；跨平台；垃圾自动回收机制；多线程 &lt;/p&gt;
-&lt;p&gt;— 未完待续—&lt;/p&gt;</summary>
+&lt;h2 id=&quot;2-数据类型&quot;&gt;&lt;a href=&quot;#2-数据类型&quot; class=&quot;headerlink&quot; title=&quot;2 数据类型&quot;&gt;&lt;/a&gt;2 数据类型&lt;/h2&gt;&lt;h3 id=&quot;2-1-什么是注释？作用是什么？注释的分类以及表现形式？&quot;&gt;&lt;a href=&quot;#2-1-什么是注释？作用是什么？注释的分类以及表现形式？&quot; class=&quot;headerlink&quot; title=&quot;2.1 什么是注释？作用是什么？注释的分类以及表现形式？&quot;&gt;&lt;/a&gt;2.1 什么是注释？作用是什么？注释的分类以及表现形式？&lt;/h3&gt;&lt;p&gt;对编写的Java程序进行说明，方便自己与他人的日后阅读与维护。&lt;/p&gt;
+&lt;p&gt;单行注释：   //&lt;/p&gt;
+&lt;p&gt;多行注释：   /*    */&lt;/p&gt;
+&lt;p&gt;文档注释： /**    **/  (可以通过Javac编译转换成独立于程序之外的一个注释文件)&lt;/p&gt;
+&lt;h3 id=&quot;2-2标识符是什么？有什么具体规则？&quot;&gt;&lt;a href=&quot;#2-2标识符是什么？有什么具体规则？&quot; class=&quot;headerlink&quot; title=&quot;2.2标识符是什么？有什么具体规则？&quot;&gt;&lt;/a&gt;2.2标识符是什么？有什么具体规则？&lt;/h3&gt;&lt;p&gt;标识符是编写Java代码时给代码中的元素赋予的名字，良好的标识符习惯能够提高代码的可阅读性及可维护性。其基本规则如下：&lt;/p&gt;
+&lt;p&gt;1.可以用数字、字母、_、$组成，数字不能开头；&lt;/p&gt;
+&lt;p&gt;2.不能带有空格；&lt;/p&gt;
+&lt;p&gt;3.严格区分大小写；&lt;/p&gt;
+&lt;p&gt;4.不能是关键字；&lt;/p&gt;
+&lt;p&gt;常常需要默认遵守的规则是：&lt;/p&gt;
+&lt;p&gt;类—满足标识符规范，类名首字母大写 &lt;/p&gt;
+&lt;p&gt;方法—满足标识符规范，通常以动词开头，首字母小写，从第二个单词开始首字母大写 &lt;/p&gt;
+&lt;p&gt;变量—满足标识符规范，名称中所有字母小写 &lt;/p&gt;
+&lt;h3 id=&quot;2-3什么是关键字？常用关键字有哪些？&quot;&gt;&lt;a href=&quot;#2-3什么是关键字？常用关键字有哪些？&quot; class=&quot;headerlink&quot; title=&quot;2.3什么是关键字？常用关键字有哪些？&quot;&gt;&lt;/a&gt;2.3什么是关键字？常用关键字有哪些？&lt;/h3&gt;&lt;p&gt;Java程序中已经被赋予特殊含义的名词。例如 ‘return public private this’&lt;/p&gt;
+&lt;h3 id=&quot;2-4什么是变量？变量的作用是什么？变量的组成？&quot;&gt;&lt;a href=&quot;#2-4什么是变量？变量的作用是什么？变量的组成？&quot; class=&quot;headerlink&quot; title=&quot;2.4什么是变量？变量的作用是什么？变量的组成？&quot;&gt;&lt;/a&gt;2.4什么是变量？变量的作用是什么？变量的组成？&lt;/h3&gt;&lt;p&gt; 变量就是在Java程序中随时都可能变化的数据，变量是用来保存具体的数据值，并且限制了数据在内存中保存的位置和大小。 对于变量我们通常需要注意四个问题：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;数据类型—决定了其所占的内存空间&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;变量名—即自己定义的标识符&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;初始值（或默认值）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;作用域—生命周期以及空间范围&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;2-5-Java中的基本数据类型有几种？如何表示，取值范围，注意事项？&quot;&gt;&lt;a href=&quot;#2-5-Java中的基本数据类型有几种？如何表示，取值范围，注意事项？&quot; class=&quot;headerlink&quot; title=&quot;2.5 Java中的基本数据类型有几种？如何表示，取值范围，注意事项？&quot;&gt;&lt;/a&gt;2.5 Java中的基本数据类型有几种？如何表示，取值范围，注意事项？&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;整数型&lt;/th&gt;
+&lt;th&gt;浮点数&lt;/th&gt;
+&lt;th&gt;字符型&lt;/th&gt;
+&lt;th&gt;布尔型&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;byte(字节型)&lt;/td&gt;
+&lt;td&gt;float(单精度浮点型)&lt;/td&gt;
+&lt;td&gt;char&lt;/td&gt;
+&lt;td&gt;boolean&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;short(短整型)&lt;/td&gt;
+&lt;td&gt;double(双精度浮点型)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;int(整型)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;long(长整型)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;</summary>
     
     
     
