@@ -95,4 +95,155 @@
         <tag>Java,编程</tag>
       </tags>
   </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/31/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%90%8C%E6%AD%A5/</url>
+    <content><![CDATA[<p>#设置文章分类以及标签<br>title: Java学习之线程与同步<br>categories: Java<br>tags: </p>
+<ul>
+<li>线程</li>
+<li>同步</li>
+<li>Java</li>
+</ul>
+<h1 id="线程、同步"><a href="#线程、同步" class="headerlink" title="线程、同步"></a>线程、同步</h1><p>主要内容</p>
+<ul>
+<li>线程</li>
+<li>同步</li>
+<li>线程状态</li>
+</ul>
+<p>学习目标</p>
+<ul>
+<li><p>能够描述多线程的运行原理</p>
+</li>
+<li><p>能够使用<strong>继承类</strong>的方法创建多线程</p>
+</li>
+<li><p>能够使用<strong>接口类</strong>的方法创建多线程</p>
+</li>
+<li><p>对比继承类和接口类实现多线程的优劣</p>
+</li>
+<li><p>理解线程安全问题出现的原因</p>
+</li>
+<li><p>使用<strong>同步代码块</strong>解决线程安全问题</p>
+</li>
+<li><p>使用<strong>同步方法</strong>解决线程安全问题</p>
+</li>
+<li><p>记住<strong>线程状态</strong></p>
+</li>
+</ul>
+<p>![线程 (2)](G:\Users\25318\Picture\线程 (2).png)</p>
+<h1 id="第一章-线程"><a href="#第一章-线程" class="headerlink" title="第一章 线程"></a>第一章 线程</h1><h2 id="1、运行原理"><a href="#1、运行原理" class="headerlink" title="1、运行原理"></a>1、运行原理</h2><p><img src="C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604031071548.png" alt="1604031071548"></p>
+<p><img src="C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604031094742.png" alt="1604031094742"></p>
+<h2 id="2、Thread类"><a href="#2、Thread类" class="headerlink" title="2、Thread类"></a>2、Thread类</h2><p>Thread的构造方法：</p>
+<blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Thread</span><span class="params">()</span>: 分配一个新线程对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Thread</span><span class="params">(String name)</span>:分配一个新线程对象，并指定名字</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Thread</span><span class="params">(Runable target)</span>:分配一个新线程对象，带有指定目标</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Thread</span><span class="params">(Runable target,String name)</span>:分配一个新线程对象，指定目标以及名称</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>Thread中的常用方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span>:获得当前线程的名称</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;开始执行线程；Java调用此线程的run方法</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span>:</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> millis)</span>:正在执行的线程暂停   ms</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Thread <span class="title">currentThread</span><span class="params">()</span>:返回正在执行的线程对象</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="3、Runable方法创建线程"><a href="#3、Runable方法创建线程" class="headerlink" title="3、Runable方法创建线程"></a>3、Runable方法创建线程</h2><p>1、实现Runable方法对象，创建线程执行对象</p>
+<p>2、将实现的方法对象在Thread中运行</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line"><span class="comment">/*    </span></span><br><span class="line"><span class="comment"> * 利用继承中的特点     </span></span><br><span class="line"><span class="comment"> *   将线程名称传递  进行设置    </span></span><br><span class="line"><span class="comment"> */</span>    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyThread</span><span class="params">(String name)</span></span>&#123;    </span><br><span class="line"><span class="keyword">super</span>(name);        </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">/*    </span></span><br><span class="line"><span class="comment"> * 重写run方法    </span></span><br><span class="line"><span class="comment"> *  定义线程要执行的代码    </span></span><br><span class="line"><span class="comment"> */</span>    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;          </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line"><span class="comment">//getName()方法 来自父亲            </span></span><br><span class="line">System.out.println(getName()+i);            </span><br><span class="line">          &#125;        </span><br><span class="line">     &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">           System.out.println(<span class="string">&quot;这里是main线程&quot;</span>);  </span><br><span class="line">           MyThread mt = <span class="keyword">new</span> MyThread(<span class="string">&quot;小强&quot;</span>);           </span><br><span class="line">           mt.start();<span class="comment">//开启了一个新的线程    </span></span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;    </span><br><span class="line">           System.out.println(<span class="string">&quot;旺财:&quot;</span>+i);            </span><br><span class="line">           &#125;        </span><br><span class="line">       &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4、Thread类的实现多线程方法"><a href="#4、Thread类的实现多线程方法" class="headerlink" title="4、Thread类的实现多线程方法"></a>4、Thread类的实现多线程方法</h2><p>1、继承Thread类，创建线程，重写run方法</p>
+<p>2、新建并执行已经创建的类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line"><span class="meta">@Override</span>    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;    </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;        </span><br><span class="line">System.out.println(Thread.currentThread().getName()+<span class="string">&quot; &quot;</span>+i);            </span><br><span class="line">           &#125;        </span><br><span class="line">     &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建自定义类对象  线程任务对象</span></span><br><span class="line">        MyRunnable mr = <span class="keyword">new</span> MyRunnable();</span><br><span class="line">        <span class="comment">//创建线程对象</span></span><br><span class="line">        Thread t = <span class="keyword">new</span> Thread(mr, <span class="string">&quot;小强&quot;</span>);</span><br><span class="line">        t.start();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;旺财 &quot;</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5、两种方法的对比"><a href="#5、两种方法的对比" class="headerlink" title="5、两种方法的对比"></a>5、两种方法的对比</h2><p><img src="C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604043460123.png" alt="1604043460123"></p>
+<p><strong>实现Runnable接口比继承Thread类所具有的优势：</strong></p>
+<ol>
+<li>适合多个相同的程序代码的线程去共享同一个资源。</li>
+<li>可以避免java中的单继承的局限性。</li>
+<li>增加程序的健壮性，实现解耦操作，代码可以被多个线程共享，代码和线程独立。</li>
+<li>线程池只能放入实现Runable或Callable类线程，不能直接放入继承Thread的类。</li>
+</ol>
+<h1 id="第二章-线程安全"><a href="#第二章-线程安全" class="headerlink" title="第二章 线程安全"></a>第二章 线程安全</h1><h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p>原因：共享数据访问未保护</p>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><p>Java中提供了同步机制（synchronized）来解决</p>
+<ul>
+<li><strong>同步代码块。</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">synchronized</span>(同步锁)&#123;</span><br><span class="line">        需要进行同步操作的代码  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604109764782.png" alt="1604109764782"></p>
+<p><img src="G:\Users\25318\Picture\IMG_20201031_102814.jpg" alt="IMG_20201031_102814"></p>
+<ul>
+<li><p><strong>同步方法。</strong></p>
+<p>使用synchronized修饰的方法，就叫做同步方法。保证某一线程正在执行该方法时，其他线性不能执行该方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">  会产生安全问题的代码</span><br><span class="line">  就是上面需要同步操作的代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 与上面同步代码块相似，会存在同步锁：</p>
+<p>对于静态方法，我们使用<strong>当前方法所在类的字节码对象（类名.class）</strong></p>
+<p>对于非静态方法，同步锁就是<code>this</code></p>
+</li>
+</ul>
+<p><img src="C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604114867286.png" alt="1604114867286"></p>
+<p><strong>与同步代码块相比较，同步方法将同步对象方法化，便于调用，增加了同步对象的灵活性。</strong></p>
+<ul>
+<li><strong>锁机制</strong></li>
+</ul>
+<p><code>public void lock();</code></p>
+<p><code>public void unlock();</code></p>
+<p>使用时首先创建<code>Lock lock = new ReentrantLock();</code></p>
+<p>疑问：1、<code>ReentrantLock（）</code>是什么对象？</p>
+<p>2、<code>run</code>方法中存在多个需要保证同步的代码块怎么处理？</p>
+<h1 id="第三章-线程状态"><a href="#第三章-线程状态" class="headerlink" title="第三章 线程状态"></a>第三章 线程状态</h1><h2 id="线程状态概述"><a href="#线程状态概述" class="headerlink" title="线程状态概述"></a>线程状态概述</h2><p>从线程被创建到被释放的生命周期中，线程一直处在不同的状态下。</p>
+<table>
+<thead>
+<tr>
+<th>线程状态</th>
+<th>状态产生的条件</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>new（）：新建线程</td>
+<td>被创建，未启动。未调用start方法</td>
+<td></td>
+</tr>
+<tr>
+<td>Runnable（）:可运行</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Blocked：阻塞</td>
+<td>未拿到锁对象</td>
+<td></td>
+</tr>
+<tr>
+<td>Waiting：无限等待</td>
+<td>等待另一个线程用notify或notifyAll唤醒自己</td>
+<td></td>
+</tr>
+<tr>
+<td>Timed Waiting：计时等待</td>
+<td>要么被唤醒，要么计时超时</td>
+<td></td>
+</tr>
+<tr>
+<td>Teminated：终止</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="Timed-Waiting-计时等待"><a href="#Timed-Waiting-计时等待" class="headerlink" title="Timed Waiting(计时等待)"></a>Timed Waiting(计时等待)</h2><p>参考案例：Thread.sleep()就是计时等待，在休眠期间线程被挂起。</p>
+<p><strong>为了只挂起自己的线程，应该讲Thread.sleep放在线程内部执行</strong></p>
+<p><img src="C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604127281753.png" alt="1604127281753"></p>
+<h2 id="Bloched（阻塞线程）"><a href="#Bloched（阻塞线程）" class="headerlink" title="Bloched（阻塞线程）"></a>Bloched（阻塞线程）</h2><p><img src="C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604127376961.png" alt="1604127376961"></p>
+<p><img src="C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604127547190.png" alt="1604127547190"></p>
+<p><img src="C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604134798047.png" alt="1604134798047"></p>
+<a id="more"></a> 
+<p>//因为在博客主页会有多篇文章，如果文章只显示一部分，多余的可以点击阅读全文来查看，那么你需要在你的文章中添加</p>
+]]></content>
+  </entry>
 </search>

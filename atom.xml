@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-10-20T15:30:30.055Z</updated>
+  <updated>2020-10-31T11:19:23.369Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,164 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://example.com/2020/10/31/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%90%8C%E6%AD%A5/"/>
+    <id>http://example.com/2020/10/31/%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%90%8C%E6%AD%A5/</id>
+    <published>2020-10-31T11:16:05.433Z</published>
+    <updated>2020-10-31T11:19:23.369Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;#设置文章分类以及标签&lt;br&gt;title: Java学习之线程与同步&lt;br&gt;categories: Java&lt;br&gt;tags: &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线程&lt;/li&gt;
+&lt;li&gt;同步&lt;/li&gt;
+&lt;li&gt;Java&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;线程、同步&quot;&gt;&lt;a href=&quot;#线程、同步&quot; class=&quot;headerlink&quot; title=&quot;线程、同步&quot;&gt;&lt;/a&gt;线程、同步&lt;/h1&gt;&lt;p&gt;主要内容&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;线程&lt;/li&gt;
+&lt;li&gt;同步&lt;/li&gt;
+&lt;li&gt;线程状态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;学习目标&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;能够描述多线程的运行原理&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;能够使用&lt;strong&gt;继承类&lt;/strong&gt;的方法创建多线程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;能够使用&lt;strong&gt;接口类&lt;/strong&gt;的方法创建多线程&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;对比继承类和接口类实现多线程的优劣&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;理解线程安全问题出现的原因&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用&lt;strong&gt;同步代码块&lt;/strong&gt;解决线程安全问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用&lt;strong&gt;同步方法&lt;/strong&gt;解决线程安全问题&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;记住&lt;strong&gt;线程状态&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;![线程 (2)](G:\Users\25318\Picture\线程 (2).png)&lt;/p&gt;
+&lt;h1 id=&quot;第一章-线程&quot;&gt;&lt;a href=&quot;#第一章-线程&quot; class=&quot;headerlink&quot; title=&quot;第一章 线程&quot;&gt;&lt;/a&gt;第一章 线程&lt;/h1&gt;&lt;h2 id=&quot;1、运行原理&quot;&gt;&lt;a href=&quot;#1、运行原理&quot; class=&quot;headerlink&quot; title=&quot;1、运行原理&quot;&gt;&lt;/a&gt;1、运行原理&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604031071548.png&quot; alt=&quot;1604031071548&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604031094742.png&quot; alt=&quot;1604031094742&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2、Thread类&quot;&gt;&lt;a href=&quot;#2、Thread类&quot; class=&quot;headerlink&quot; title=&quot;2、Thread类&quot;&gt;&lt;/a&gt;2、Thread类&lt;/h2&gt;&lt;p&gt;Thread的构造方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;: 分配一个新线程对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String name)&lt;/span&gt;:分配一个新线程对象，并指定名字&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Runable target)&lt;/span&gt;:分配一个新线程对象，带有指定目标&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Thread&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Runable target,String name)&lt;/span&gt;:分配一个新线程对象，指定目标以及名称&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Thread中的常用方法：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;:获得当前线程的名称&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;;开始执行线程；Java调用此线程的run方法&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;long&lt;/span&gt; millis)&lt;/span&gt;:正在执行的线程暂停   ms&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Thread &lt;span class=&quot;title&quot;&gt;currentThread&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;:返回正在执行的线程对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;h2 id=&quot;3、Runable方法创建线程&quot;&gt;&lt;a href=&quot;#3、Runable方法创建线程&quot; class=&quot;headerlink&quot; title=&quot;3、Runable方法创建线程&quot;&gt;&lt;/a&gt;3、Runable方法创建线程&lt;/h2&gt;&lt;p&gt;1、实现Runable方法对象，创建线程执行对象&lt;/p&gt;
+&lt;p&gt;2、将实现的方法对象在Thread中运行&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyThread&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Thread&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*    &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 利用继承中的特点     &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; *   将线程名称传递  进行设置    &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; */&lt;/span&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyThread&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String name)&lt;/span&gt;&lt;/span&gt;&amp;#123;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;(name);        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*    &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; * 重写run方法    &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; *  定义线程要执行的代码    &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt; */&lt;/span&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;          &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//getName()方法 来自父亲            &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;System.out.println(getName()+i);            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          &amp;#125;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;#125;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Demo&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;这里是main线程&amp;quot;&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           MyThread mt = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; MyThread(&lt;span class=&quot;string&quot;&gt;&amp;quot;小强&amp;quot;&lt;/span&gt;);           &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           mt.start();&lt;span class=&quot;comment&quot;&gt;//开启了一个新的线程    &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;; i++) &amp;#123;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;旺财:&amp;quot;&lt;/span&gt;+i);            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &amp;#125;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;#125;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;h2 id=&quot;4、Thread类的实现多线程方法&quot;&gt;&lt;a href=&quot;#4、Thread类的实现多线程方法&quot; class=&quot;headerlink&quot; title=&quot;4、Thread类的实现多线程方法&quot;&gt;&lt;/a&gt;4、Thread类的实现多线程方法&lt;/h2&gt;&lt;p&gt;1、继承Thread类，创建线程，重写run方法&lt;/p&gt;
+&lt;p&gt;2、新建并执行已经创建的类&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyRunnable&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Runnable&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;; i++) &amp;#123;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;System.out.println(Thread.currentThread().getName()+&lt;span class=&quot;string&quot;&gt;&amp;quot; &amp;quot;&lt;/span&gt;+i);            &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &amp;#125;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &amp;#125;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Demo&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//创建自定义类对象  线程任务对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        MyRunnable mr = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; MyRunnable();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//创建线程对象&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Thread t = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread(mr, &lt;span class=&quot;string&quot;&gt;&amp;quot;小强&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        t.start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; i = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            System.out.println(&lt;span class=&quot;string&quot;&gt;&amp;quot;旺财 &amp;quot;&lt;/span&gt; + i);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+
+
+&lt;h2 id=&quot;5、两种方法的对比&quot;&gt;&lt;a href=&quot;#5、两种方法的对比&quot; class=&quot;headerlink&quot; title=&quot;5、两种方法的对比&quot;&gt;&lt;/a&gt;5、两种方法的对比&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604043460123.png&quot; alt=&quot;1604043460123&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;实现Runnable接口比继承Thread类所具有的优势：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;适合多个相同的程序代码的线程去共享同一个资源。&lt;/li&gt;
+&lt;li&gt;可以避免java中的单继承的局限性。&lt;/li&gt;
+&lt;li&gt;增加程序的健壮性，实现解耦操作，代码可以被多个线程共享，代码和线程独立。&lt;/li&gt;
+&lt;li&gt;线程池只能放入实现Runable或Callable类线程，不能直接放入继承Thread的类。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;第二章-线程安全&quot;&gt;&lt;a href=&quot;#第二章-线程安全&quot; class=&quot;headerlink&quot; title=&quot;第二章 线程安全&quot;&gt;&lt;/a&gt;第二章 线程安全&lt;/h1&gt;&lt;h2 id=&quot;线程安全&quot;&gt;&lt;a href=&quot;#线程安全&quot; class=&quot;headerlink&quot; title=&quot;线程安全&quot;&gt;&lt;/a&gt;线程安全&lt;/h2&gt;&lt;p&gt;原因：共享数据访问未保护&lt;/p&gt;
+&lt;h2 id=&quot;线程同步&quot;&gt;&lt;a href=&quot;#线程同步&quot; class=&quot;headerlink&quot; title=&quot;线程同步&quot;&gt;&lt;/a&gt;线程同步&lt;/h2&gt;&lt;p&gt;Java中提供了同步机制（synchronized）来解决&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;同步代码块。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt;(同步锁)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        需要进行同步操作的代码  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604109764782.png&quot; alt=&quot;1604109764782&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;G:\Users\25318\Picture\IMG_20201031_102814.jpg&quot; alt=&quot;IMG_20201031_102814&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;同步方法。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;使用synchronized修饰的方法，就叫做同步方法。保证某一线程正在执行该方法时，其他线性不能执行该方法。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  会产生安全问题的代码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  就是上面需要同步操作的代码&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt; 与上面同步代码块相似，会存在同步锁：&lt;/p&gt;
+&lt;p&gt;对于静态方法，我们使用&lt;strong&gt;当前方法所在类的字节码对象（类名.class）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于非静态方法，同步锁就是&lt;code&gt;this&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604114867286.png&quot; alt=&quot;1604114867286&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;与同步代码块相比较，同步方法将同步对象方法化，便于调用，增加了同步对象的灵活性。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;锁机制&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;public void lock();&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;public void unlock();&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;使用时首先创建&lt;code&gt;Lock lock = new ReentrantLock();&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;疑问：1、&lt;code&gt;ReentrantLock（）&lt;/code&gt;是什么对象？&lt;/p&gt;
+&lt;p&gt;2、&lt;code&gt;run&lt;/code&gt;方法中存在多个需要保证同步的代码块怎么处理？&lt;/p&gt;
+&lt;h1 id=&quot;第三章-线程状态&quot;&gt;&lt;a href=&quot;#第三章-线程状态&quot; class=&quot;headerlink&quot; title=&quot;第三章 线程状态&quot;&gt;&lt;/a&gt;第三章 线程状态&lt;/h1&gt;&lt;h2 id=&quot;线程状态概述&quot;&gt;&lt;a href=&quot;#线程状态概述&quot; class=&quot;headerlink&quot; title=&quot;线程状态概述&quot;&gt;&lt;/a&gt;线程状态概述&lt;/h2&gt;&lt;p&gt;从线程被创建到被释放的生命周期中，线程一直处在不同的状态下。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;线程状态&lt;/th&gt;
+&lt;th&gt;状态产生的条件&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;new（）：新建线程&lt;/td&gt;
+&lt;td&gt;被创建，未启动。未调用start方法&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Runnable（）:可运行&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Blocked：阻塞&lt;/td&gt;
+&lt;td&gt;未拿到锁对象&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Waiting：无限等待&lt;/td&gt;
+&lt;td&gt;等待另一个线程用notify或notifyAll唤醒自己&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Timed Waiting：计时等待&lt;/td&gt;
+&lt;td&gt;要么被唤醒，要么计时超时&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Teminated：终止&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;h2 id=&quot;Timed-Waiting-计时等待&quot;&gt;&lt;a href=&quot;#Timed-Waiting-计时等待&quot; class=&quot;headerlink&quot; title=&quot;Timed Waiting(计时等待)&quot;&gt;&lt;/a&gt;Timed Waiting(计时等待)&lt;/h2&gt;&lt;p&gt;参考案例：Thread.sleep()就是计时等待，在休眠期间线程被挂起。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;为了只挂起自己的线程，应该讲Thread.sleep放在线程内部执行&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604127281753.png&quot; alt=&quot;1604127281753&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Bloched（阻塞线程）&quot;&gt;&lt;a href=&quot;#Bloched（阻塞线程）&quot; class=&quot;headerlink&quot; title=&quot;Bloched（阻塞线程）&quot;&gt;&lt;/a&gt;Bloched（阻塞线程）&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604127376961.png&quot; alt=&quot;1604127376961&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604127547190.png&quot; alt=&quot;1604127547190&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;C:\Users\25318.LAPTOP-CJ0J7D86\AppData\Roaming\Typora\typora-user-images\1604134798047.png&quot; alt=&quot;1604134798047&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Java基础知识回顾</title>
